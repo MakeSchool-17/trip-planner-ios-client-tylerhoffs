@@ -1,10 +1,13 @@
+
 //
-//  CoreDataStack.swift
+//  CoreDataStackInMemory.swift
 //  TripPlanner
 //
-//  Created by Tyler Hoffman on 2015/10/27.
+//  Created by Benjamin Encz on 7/20/15.
 //  Copyright © 2015 Make School. All rights reserved.
 //
+
+// Structure is inspired by: http://martiancraft.com/blog/2015/03/core-data-stack/, Thanks!
 
 
 import Foundation

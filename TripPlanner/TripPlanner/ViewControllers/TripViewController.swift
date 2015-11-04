@@ -8,14 +8,28 @@
 
 import UIKit
 
-class TripViewController: UIViewController {
 
+class TripViewController: UIViewController {
+    
+    var currTrip: Trip?
+
+    @IBOutlet weak var tripNameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        if let currTrip = currTrip {
+            tripNameLabel.text = currTrip.locationDescription
+        }
+        
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+//        if let currTrip = currTrip {
+//            tripNameLabel.text = currTrip.locationDescription
+//        }
+        
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

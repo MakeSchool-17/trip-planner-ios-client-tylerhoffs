@@ -21,6 +21,7 @@
 		21719F4C1BE00B3C008987E3 /* SyncInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21719F461BE00B3C008987E3 /* SyncInformation.swift */; settings = {ASSET_TAGS = (); }; };
 		21719F4D1BE00B3C008987E3 /* Trip+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21719F471BE00B3C008987E3 /* Trip+CoreDataProperties.swift */; settings = {ASSET_TAGS = (); }; };
 		21719F4E1BE00B3C008987E3 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21719F481BE00B3C008987E3 /* Trip.swift */; settings = {ASSET_TAGS = (); }; };
+		21719F501BE2BFB3008987E3 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21719F4F1BE2BFB3008987E3 /* CoreDataHelper.swift */; settings = {ASSET_TAGS = (); }; };
 		21E114E41BDEA3320073FEE5 /* PlannedTripsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E114E31BDEA3320073FEE5 /* PlannedTripsTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		21E114E61BDEA7AF0073FEE5 /* NewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E114E51BDEA7AF0073FEE5 /* NewTripViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		21E114E81BDECAC50073FEE5 /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E114E71BDECAC40073FEE5 /* TripViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -66,6 +67,7 @@
 		21719F461BE00B3C008987E3 /* SyncInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncInformation.swift; sourceTree = "<group>"; };
 		21719F471BE00B3C008987E3 /* Trip+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Trip+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		21719F481BE00B3C008987E3 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		21719F4F1BE2BFB3008987E3 /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
 		21E114E31BDEA3320073FEE5 /* PlannedTripsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlannedTripsTableViewController.swift; sourceTree = "<group>"; };
 		21E114E51BDEA7AF0073FEE5 /* NewTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTripViewController.swift; sourceTree = "<group>"; };
 		21E114E71BDECAC40073FEE5 /* TripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				21719F461BE00B3C008987E3 /* SyncInformation.swift */,
 				21719F471BE00B3C008987E3 /* Trip+CoreDataProperties.swift */,
 				21719F481BE00B3C008987E3 /* Trip.swift */,
+				21719F4F1BE2BFB3008987E3 /* CoreDataHelper.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21719F501BE2BFB3008987E3 /* CoreDataHelper.swift in Sources */,
 				21E114E41BDEA3320073FEE5 /* PlannedTripsTableViewController.swift in Sources */,
 				21E114E81BDECAC50073FEE5 /* TripViewController.swift in Sources */,
 				21E114EC1BDEFF900073FEE5 /* ViewWaypointViewController.swift in Sources */,
@@ -468,7 +472,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.TripPlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "TripPlanner/CoreData/TripPlanner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -482,7 +485,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.makeschool.TripPlanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "TripPlanner/CoreData/TripPlanner-Bridging-Header.h";
 			};
 			name = Release;
 		};

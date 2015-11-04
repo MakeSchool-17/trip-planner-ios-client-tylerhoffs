@@ -9,12 +9,13 @@
 import Foundation
 import CoreData
 
-final class Trip: NSManagedObject, TripPlannerManagedObject {
+final class Trip: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
     
-    convenience init(context: NSManagedObjectContext){
-        let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext: context)!
+    convenience init(context: NSManagedObjectContext) {
+        let entityDescription = NSEntityDescription.entityForName("Trip", inManagedObjectContext:
+            context)!
         self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
     }
 

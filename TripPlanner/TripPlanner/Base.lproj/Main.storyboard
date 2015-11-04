@@ -47,7 +47,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="3NR-aY-Hod" kind="show" id="kCN-gg-wlJ"/>
+                        <outlet property="plannedTripsTableView" destination="qaS-bc-bu7" id="qw2-oO-rC4"/>
+                        <segue destination="3NR-aY-Hod" kind="show" identifier="ShowTrip" id="rVe-tz-1tK"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lLQ-T3-zuF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -85,11 +86,11 @@
                                 <rect key="frame" x="0.0" y="217" width="600" height="383"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="r7C-1N-eMe">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WahpointCell" id="r7C-1N-eMe">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r7C-1N-eMe" id="1fh-gC-SsV">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
@@ -128,6 +129,9 @@
                             <constraint firstItem="6WY-w1-UYi" firstAttribute="top" secondItem="TPV-XZ-aJI" secondAttribute="bottom" constant="20" id="sWm-08-vVa"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tripNameLabel" destination="TPV-XZ-aJI" id="cKb-uR-yAX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HLN-X3-ggq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <view contentMode="scaleToFill" id="h3d-hK-GFX" userLabel="NoWaypointsView">
@@ -250,12 +254,12 @@
                                     <navigationItem title="Add Trip" id="DYm-I7-M6n">
                                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="vq7-Nj-qSV">
                                             <connections>
-                                                <segue destination="7k7-Bg-1xS" kind="unwind" identifier="Cancel" unwindAction="unwindToSegue:" id="oju-om-Eec"/>
+                                                <segue destination="7k7-Bg-1xS" kind="unwind" identifier="Cancel" unwindAction="unwindToSegue:" id="YcZ-BC-qdm"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Add" id="blZ-zX-UK2">
                                             <connections>
-                                                <segue destination="7k7-Bg-1xS" kind="unwind" identifier="Add" unwindAction="unwindToSegue:" id="TGi-PD-22A"/>
+                                                <segue destination="7k7-Bg-1xS" kind="unwind" identifier="Add" unwindAction="unwindToSegue:" id="dXc-ft-K1X"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -291,6 +295,9 @@
                             <constraint firstItem="vqF-g8-3k3" firstAttribute="top" secondItem="5Ba-rS-sWr" secondAttribute="bottom" constant="8" symbolic="YES" id="zKF-DD-rTu"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tripNameField" destination="vqF-g8-3k3" id="Ghd-75-A11"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cte-Ql-hQL" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="7k7-Bg-1xS" userLabel="Exit" sceneMemberID="exit"/>
@@ -350,6 +357,9 @@
                             <constraint firstItem="5lV-ep-0jW" firstAttribute="trailing" secondItem="ndM-Wo-AY8" secondAttribute="trailing" id="xZN-YT-qCm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="hYF-xM-xor" id="lrr-T7-CmU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QIK-d4-Lih" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
