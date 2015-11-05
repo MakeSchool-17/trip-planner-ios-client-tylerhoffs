@@ -35,6 +35,29 @@ class TripViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func unwindToSegue2(segue: UIStoryboardSegue) {
+        
+        if let identifier = segue.identifier{
+            switch identifier {
+            case "Save":
+                print("ADDWaypoint")
+                //let source = segue.sourceViewController as! NewWaypointViewController
+                //CoreDataHelper(coreDataStack: coreDataStack).addTrip(source.tripName!)
+            case "Cancel":
+                print("No Waypoint")
+            default:
+                print("No Trip")
+            }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "AddMore") {
+            let waypointViewController = segue.destinationViewController as! NewWaypointViewController
+            waypointViewController.currTrip = currTrip
+        }
+    }
+    
 
     /*
     // MARK: - Navigation

@@ -106,7 +106,7 @@
                                 </constraints>
                                 <state key="normal" title="Add More Waypoints"/>
                                 <connections>
-                                    <segue destination="9yl-Jq-prD" kind="popoverPresentation" popoverAnchorView="6WY-w1-UYi" id="Gfg-sa-ptf">
+                                    <segue destination="9yl-Jq-prD" kind="popoverPresentation" identifier="AddMore" popoverAnchorView="6WY-w1-UYi" id="Gfg-sa-ptf">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
@@ -160,7 +160,7 @@
                             </constraints>
                             <state key="normal" title="Get Started!"/>
                             <connections>
-                                <segue destination="9yl-Jq-prD" kind="popoverPresentation" popoverAnchorView="hBO-zx-UhF" id="Abn-bB-LGd">
+                                <segue destination="9yl-Jq-prD" kind="popoverPresentation" identifier="GetStarted" popoverAnchorView="hBO-zx-UhF" id="Abn-bB-LGd">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
@@ -327,8 +327,16 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Add Waypoint" id="zL0-qu-cwI">
-                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="W3J-qI-imN"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Save" id="G10-wL-X1Y"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="W3J-qI-imN">
+                                            <connections>
+                                                <segue destination="dur-PK-Ipk" kind="unwind" identifier="Cancel" unwindAction="unwindToSegue2:" id="rGs-Po-s6Q"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Save" id="G10-wL-X1Y">
+                                            <connections>
+                                                <segue destination="dur-PK-Ipk" kind="unwind" identifier="Save" unwindAction="unwindToSegue2:" id="ew7-tC-xkY"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -359,9 +367,12 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="hYF-xM-xor" id="lrr-T7-CmU"/>
+                        <outlet property="searchBar" destination="ndM-Wo-AY8" id="hOX-Wz-xht"/>
+                        <outlet property="searchTableView" destination="5lV-ep-0jW" id="1i8-53-ToO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QIK-d4-Lih" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="dur-PK-Ipk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1329" y="1637"/>
         </scene>

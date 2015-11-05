@@ -7,11 +7,17 @@
 //
 
 import UIKit
-import MKMapView
+import MapKit
 
 class NewWaypointViewController: UIViewController {
-
+    
+    var currTrip: Trip?
+    
     @IBOutlet weak var mapView: MKMapView!
+    
+    @IBOutlet weak var searchBar: UISearchBar!
+
+    @IBOutlet weak var searchTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +29,7 @@ class NewWaypointViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     
 
     /*

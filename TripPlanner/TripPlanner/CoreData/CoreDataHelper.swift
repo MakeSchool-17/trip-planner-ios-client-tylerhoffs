@@ -47,8 +47,20 @@ class CoreDataHelper{
     func returnAllTrips() -> [Trip]{
         let fetchRequest = NSFetchRequest(entityName: "Trip")
         let trips = try! managedObjectContext.executeFetchRequest(fetchRequest) as! [Trip]
-        print(trips.count)
         return trips
+        
+    }
+    
+    func deleteTrip(trip: Trip){
+        managedObjectContext.deleteObject(trip)
+        
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError  {
+            print(error.localizedDescription)
+        }
+        
+        coreDataStack.save()
         
     }
 }

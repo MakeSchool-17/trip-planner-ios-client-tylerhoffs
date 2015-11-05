@@ -58,7 +58,6 @@ class PlannedTripsTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "ShowTrip") {
-            print("SEGWAY BABY")
             let tripViewController = segue.destinationViewController as! TripViewController
             tripViewController.currTrip = selectedTrip
         }
@@ -84,5 +83,20 @@ extension PlannedTripsTableViewController{
         selectedTrip = trips[indexPath.row]
         
         self.performSegueWithIdentifier("ShowTrip", sender: self)
+    }
+    
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if(editingStyle == .Delete ) {
+            let tripToDelete = trips[indexPath.row]
+            
+            CoreDataHelper(coreDataStack: coreDataStack).deleteTrip(tripToDelete)
+            
+            trips = CoreDataHelper(coreDataStack: coreDataStack).returnAllTrips()
+            plannedTripsTableView.reloadData()
+        }
     }
 }
