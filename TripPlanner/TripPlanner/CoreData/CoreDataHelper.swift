@@ -8,8 +8,9 @@
 
 import Foundation
 import CoreData
+import GoogleMaps
 
-class CoreDataHelper{
+class CoreDataHelper {
 
 //    var managedObjectContext: NSManagedObjectContext
 //    var coreDataStack = CoreDataStack(stackType: .SQLite)
@@ -61,6 +62,33 @@ class CoreDataHelper{
         }
         
         coreDataStack.save()
+        
+    }
+    func addWaypoint(trip: Trip, waypoint: GMSPlace){
+        let coreWaypoint = Waypoint(context: self.managedObjectContext)
+        
+        coreWaypoint.latitude = "\(waypoint.coordinate.latitude)"
+        coreWaypoint.longitude = "\(waypoint.coordinate.longitude)"
+        coreWaypoint.name = waypoint.formattedAddress
+        coreWaypoint.trip = trip
+        
+        do {
+            try managedObjectContext.save()
+        } catch let error as NSError  {
+            print(error.localizedDescription)
+        }
+        
+        coreDataStack.save()
+    }
+    func returnWaypoints(trip: Trip) -> [Waypoint]{
+        let predicate = NSPredicate(format: "trip == %@", trip)
+        
+        let fetchRequest = NSFetchRequest(entityName: "Waypoint")
+        fetchRequest.predicate = predicate
+        
+        let waypoints = try! self.managedObjectContext.executeFetchRequest(fetchRequest) as! [Waypoint]
+        
+        return waypoints
         
     }
 }

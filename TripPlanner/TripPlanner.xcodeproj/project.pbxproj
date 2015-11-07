@@ -168,8 +168,8 @@
 			isa = PBXGroup;
 			children = (
 				21719F2E1BE003E6008987E3 /* CoreDataStack.swift */,
-				21719F431BE00B3C008987E3 /* Waypoint+CoreDataProperties.swift */,
 				21719F441BE00B3C008987E3 /* Waypoint.swift */,
+				21719F431BE00B3C008987E3 /* Waypoint+CoreDataProperties.swift */,
 				21719F451BE00B3C008987E3 /* SyncInformation+CoreDataProperties.swift */,
 				21719F461BE00B3C008987E3 /* SyncInformation.swift */,
 				21719F471BE00B3C008987E3 /* Trip+CoreDataProperties.swift */,

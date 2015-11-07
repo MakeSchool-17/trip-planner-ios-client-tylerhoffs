@@ -9,8 +9,12 @@
 import Foundation
 import CoreData
 
-class Waypoint: NSManagedObject {
+final class Waypoint: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+    convenience init(context: NSManagedObjectContext) {
+        let entityDescription = NSEntityDescription.entityForName("Waypoint", inManagedObjectContext:
+            context)!
+        self.init(entity: entityDescription, insertIntoManagedObjectContext: context)
+    }
 
 }

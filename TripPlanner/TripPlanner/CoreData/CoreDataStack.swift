@@ -21,7 +21,6 @@ class CoreDataStack {
     
     private(set) var managedObjectContext: NSManagedObjectContext
     
-    private var privateManagedObjectContext: NSManagedObjectContext
     private var storeCoordinator: NSPersistentStoreCoordinator!
     private var stackType: CoreDataStackType
     
@@ -39,10 +38,7 @@ class CoreDataStack {
         storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model!)
         
         managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-        privateManagedObjectContext = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
-        
-        managedObjectContext.parentContext = privateManagedObjectContext
-        privateManagedObjectContext.persistentStoreCoordinator = storeCoordinator
+        managedObjectContext.persistentStoreCoordinator = storeCoordinator
         
         self.setupPersistentStore()
     }
@@ -73,7 +69,7 @@ class CoreDataStack {
     }
     
     func save() {
-        if (!privateManagedObjectContext.hasChanges && !managedObjectContext.hasChanges) {
+        if (!managedObjectContext.hasChanges) {
             return
         }
         
@@ -88,15 +84,6 @@ class CoreDataStack {
                 assertionFailure("Undefined error")
             }
             
-            self.privateManagedObjectContext.performBlock({ () -> Void in
-                do {
-                    try self.privateManagedObjectContext.save()
-                } catch let error as NSError {
-                    assertionFailure("Error saving context: \(error), \(error.userInfo)")
-                } catch {
-                    assertionFailure("Undefined error")
-                }
-            })
         }
     }
     

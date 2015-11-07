@@ -12,8 +12,12 @@ import UIKit
 class TripViewController: UIViewController {
     
     var currTrip: Trip?
-
+    var waypoints: [Waypoint] = []
+    var selectedWaypoint: Waypoint?
+    var coreDataStack: CoreDataStack?
+    
     @IBOutlet weak var tripNameLabel: UILabel!
+    @IBOutlet weak var waypointTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +32,10 @@ class TripViewController: UIViewController {
 //            tripNameLabel.text = currTrip.locationDescription
 //        }
         
+        waypoints = CoreDataHelper(coreDataStack: coreDataStack!).returnWaypoints(currTrip!)
+        waypointTableView.reloadData()
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,8 +49,10 @@ class TripViewController: UIViewController {
             switch identifier {
             case "Save":
                 print("ADDWaypoint")
-                //let source = segue.sourceViewController as! NewWaypointViewController
-                //CoreDataHelper(coreDataStack: coreDataStack).addTrip(source.tripName!)
+                let source = segue.sourceViewController as! NewWaypointViewController
+                CoreDataHelper(coreDataStack: coreDataStack!).addWaypoint(source.currTrip!, waypoint: source.selectedPlace!)
+                waypoints = CoreDataHelper(coreDataStack: coreDataStack!).returnWaypoints(currTrip!)
+                waypointTableView.reloadData()
             case "Cancel":
                 print("No Waypoint")
             default:
@@ -55,6 +65,10 @@ class TripViewController: UIViewController {
         if (segue.identifier == "AddMore") {
             let waypointViewController = segue.destinationViewController as! NewWaypointViewController
             waypointViewController.currTrip = currTrip
+        }
+        if (segue.identifier == "ShowWaypoint"){
+            let viewWaypointViewController = segue.destinationViewController as! ViewWaypointViewController
+            viewWaypointViewController.waypoint = selectedWaypoint
         }
     }
     
@@ -69,4 +83,38 @@ class TripViewController: UIViewController {
     }
     */
 
+}
+extension TripViewController{
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return waypoints.count
+    }
+    
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("WaypointCell")!
+        cell.textLabel?.text = waypoints[indexPath.row].name
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        selectedWaypoint = waypoints[indexPath.row]
+        
+        self.performSegueWithIdentifier("ShowWaypoint", sender: self)
+    }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if(editingStyle == .Delete ) {
+            //let waypointToDelete = waypoints[indexPath.row]
+            
+            //CoreDataHelper(coreDataStack: coreDataStack).deleteTrip(tripToDelete)
+            
+            //trips = CoreDataHelper(coreDataStack: coreDataStack).returnAllTrips()
+            //plannedTripsTableView.reloadData()
+        }
+    }
 }

@@ -60,6 +60,7 @@ class PlannedTripsTableViewController: UITableViewController {
         if (segue.identifier == "ShowTrip") {
             let tripViewController = segue.destinationViewController as! TripViewController
             tripViewController.currTrip = selectedTrip
+            tripViewController.coreDataStack = self.coreDataStack
         }
     }
 
